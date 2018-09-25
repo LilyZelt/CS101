@@ -31,6 +31,27 @@ def validate_input(string):
   if length_valid == True and all_character_valid == True and first_character_valid == True and second_character_valid == True:
     valid = True
   return valid
+  
+def evaluate_check_digit(string):
+  """Checks whether string passes its check digit test."""
+  string_upper = string.upper()
+  total_value = 0
+  #Getting a total product of all weighted character values except the first and last.
+  for index in range(0, len(string) - 2):
+      current_character = string_upper[index]
+    if current_character in ['A','B','C','D','E','F']:
+      character_value = current_character.ord() - 55
+    if current_character in ['0','1','2','3','4','5','6','7','8','9']:
+       character_value = current_character.ord() - 48
+    character_product = character_value * index
+    total value += character_product
+  #comparing the product to check digit
+  check_digit = string_upper[12]
+  if check_digit == (character_product % 10):
+    check_valid = True
+  else:
+    check_valid = False
+  return check_valid
 
 ################### MAIN PROGRAM
 
