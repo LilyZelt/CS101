@@ -1,0 +1,41 @@
+#FIXME add in header here.
+
+user_input = 'placeholder'
+while user_input != '':
+  user_input = input('Enter a code:')
+  user_upper = user_input.upper()
+  while valid == False:
+    if len(user_input) != 13:
+      valid = False
+    for cha in user_upper:
+      if cha not in ['A','B','C','D','E','F','0','1','2','3','4','5','6','7','8','9']:
+        valid = False
+    if user_upper[0] not in ['A','B','C','D']:
+      valid = False
+    if user_upper[1] not in ['A','B','C','D','E']:
+      valid = False
+      
+   def validate_input(user_input):
+      user_upper = user_input.upper()
+      valid = False
+      while valid == False:
+        if len(user_input) != 13:
+          valid = False
+        else:
+          length_valid = True
+        for cha in user_upper:
+          if cha not in ['A','B','C','D','E','F','0','1','2','3','4','5','6','7','8','9']:
+            valid = False
+          else:
+             all_character_valid = True
+        if user_upper[0] not in ['A','B','C','D']:
+          valid = False
+              first_character_valid = True
+        if user_upper[1] not in ['A','B','C','D','E']:
+          valid = False
+        else:
+          second_character_valid = True
+        if length_valid == True and all_character_valid == True and first_character_valid == True and second_character_valid == True:
+          valid = True
+        else:
+          user_input = input('Re-enter a code within limits:'))
