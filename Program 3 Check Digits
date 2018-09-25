@@ -51,6 +51,7 @@ def evaluate_check_digit(string):
     check_valid = True
   else:
     check_valid = False
+    print('FIXME error message for check digits failure')
   return check_valid
 
 ################### MAIN PROGRAM
@@ -59,7 +60,13 @@ user_input = 'placeholder'
 
 while user_input != '':
   user_input = input('Enter a code:')
-  valid = validate_input(user_input):
-  while valid == False:
-    user_input = input('Re-enter a code within valid limits:')
-    valid = validate_input(user_input)
+  initital_valid = validate_input(user_input):
+  check_digit_result = valuate_check_digit(user_input)
+  while initial_valid == False or check_digit_result == False:
+    while initital_valid == False:
+      user_input = input('Re-enter a code within valid limits:')
+      initital_valid = validate_input(user_input)
+    check_digit_result = valuate_check_digit(user_input)
+      while check_digit_result == False:
+        user_input = input('Re-enter a code with FIXME valid check digit thingy:')
+        check_digit_result = valuate_check_digit(user_input)
