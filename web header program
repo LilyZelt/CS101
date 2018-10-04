@@ -14,8 +14,23 @@ def save_headers_as_items_in_list(file_object):
   """Iterates over every line in a file and saves lines containing header formatting to a new list"""
   header_list = []
   for line in file_object:
-    if '<h' in line[:6]:
-      header_list.append('line') 
+    if '<h' in line[:6] and '>' in line[:6]: #FIXME correct formatting
+      header_list.append(line) 
   return header_list
+  
+#FIXME add function / code to prompt user to name an output file [validate if necessary], then open/create that file in write-mode.
 
-
+def replace_html_with_stars(function_string_list):
+  """Removes html <h> FIXME_correct_format language from string and formats for text documents"""
+  replacement_list = []
+  for list_item  in function_string_list:
+    iteration_string = list_item.replace('<h>', '') #FIXME correct formatting
+    iteration_string = '* ' + iteration_string
+    #FIXME make this work for subheaders too, possibly by using if elif to check the type of header and do appropriate action
+    replacement_list.append(iteration_string)
+  return replacement_list
+  
+def write_to_new_file(file_to_write_to, list_of_headers):
+  """Writes list of headers to a file."""
+  file_to_write_to.write(list_of_headers)
+  #FIXME test if needs a return or if the file gets written correctly.
