@@ -1,36 +1,39 @@
 def ask_and_validate_file(): 
-  """Asks user for file name. Validates whether that file can be opened."""
-  function_valid = False
-  while function_valid == False:
-    function_file_name = input('FIXME input prompt')
-    try:
-      function_file_reader = open(file_name)          
-      function_valid = True
-    except FileNotFoundError:
-      print('Invalid file name.')
-return function_file_name
+    """Asks user for file name. Validates whether that file can be opened."""
+    function_valid = False
+    while function_valid == False:
+        function_file_name = input('FIXME input prompt')
+        try:
+            function_file_reader = open(file_name)          
+            function_valid = True
+        except FileNotFoundError:
+            print('Invalid file name.')
+    return function_file_name
 
 def save_headers_as_items_in_list(file_object):
-  """Iterates over every line in a file and saves lines containing header formatting to a new list"""
-  header_list = []
-  for line in file_object:
-    if '<h' in line[:6] and '>' in line[:6]: #FIXME correct formatting
-      header_list.append(line) 
-  return header_list
+    """Iterates over every line in a file and saves lines containing header formatting to a new list"""
+    header_list = []
+    for line in file_object:
+        if '<h' in line[:6] and '>' in line[:6]: #FIXME correct formatting
+            header_list.append(line) 
+    return header_list
   
 #FIXME add function / code to prompt user to name an output file [validate if necessary], then open/create that file in write-mode.
 
 def replace_html_with_stars(function_string_list):
-  """Removes html <h> FIXME_correct_format language from string and formats for text documents"""
-  replacement_list = []
-  for list_item  in function_string_list:
-    iteration_string = list_item.replace('<h>', '') #FIXME correct formatting
-    iteration_string = '* ' + iteration_string
-    #FIXME make this work for subheaders too, possibly by using if elif to check the type of header and do appropriate action
-    replacement_list.append(iteration_string)
-  return replacement_list
-  
+    """Removes html <h> FIXME_correct_format language from string and formats for text documents"""
+    replacement_list = []
+    for list_item  in function_string_list:
+        if '<h1>' in list_item:
+            iteration_string = list_item.replace('<h1>', '').replace('</h1>', '') #FIXME correct formatting
+            iteration_string = '* ' + iteration_string
+            #FIXME make this work for subheaders too, possibly by using if elif to check the type of header and do appropriate action
+            replacement_list.append(iteration_string)
+        else:
+            replacement_list.append(list_item)
+    return replacement_list
+
 def write_to_new_file(file_to_write_to, list_of_headers):
-  """Writes list of headers to a file."""
-  file_to_write_to.write(list_of_headers)
-  #FIXME test if needs a return or if the file gets written correctly.
+    """Writes list of headers to a file."""
+    file_to_write_to.write(list_of_headers)
+#FIXME test if needs a return or if the file gets written correctly.
