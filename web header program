@@ -1,0 +1,21 @@
+def ask_and_validate_file(): 
+  """Asks user for file name. Validates whether that file can be opened."""
+  function_valid = False
+  while function_valid == False:
+    function_file_name = input('FIXME input prompt')
+    try:
+      function_file_reader = open(file_name)          
+      function_valid = True
+    except FileNotFoundError:
+      print('Invalid file name.')
+return function_file_name
+
+def save_headers_as_items_in_list(file_object):
+  """Iterates over every line in a file and saves lines containing header formatting to a new list"""
+  header_list = []
+  for line in file_object:
+    if '<h' in line[:6]:
+      header_list.append('line') 
+  return header_list
+
+
